@@ -10,14 +10,17 @@ weatherForm.addEventListener('submit', (e) => {
 
     const location = search.value
     messageOne.textContent = 'Loading...'
+    messageTwo.textContent = ''
 
-    fetch('http://localhost:3000/weather?address=' + location).then((response) => {
+    fetch('/weather?address=' + location).then((response) => {
     response.json().then((data) => {
         if (data.error) {
             messageOne.textContent = data.error
         } else {
             messageOne.textContent = data.Location
-            messageTwo.textContent = 'Clima agora: ' + JSON.stringify(data.Forecast.Clima_Atual) + '   Temperatura atual: ' + JSON.stringify(data.Forecast.Temperatura_Atual) + '   Chance de chuva: ' + JSON.stringify(data.Forecast.Chance_de_chuva)
+            messageTwo.textContent = 'Clima agora: ' + JSON.parse(JSON.stringify(data.Forecast.Clima_Atual)) 
+                                + '   Temperatura atual: ' + JSON.parse(JSON.stringify(data.Forecast.Temperatura_Atual)) 
+                                + '   Chance de chuva: ' + JSON.parse(JSON.stringify(data.Forecast.Chance_de_chuva))
             console.log(data.Forecast)
         }
     })
