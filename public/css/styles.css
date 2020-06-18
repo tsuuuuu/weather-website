@@ -51,9 +51,10 @@ header a:hover {
     width: 250px;
 }
 
-p {
-    margin-top: 20px;
-    margin-bottom: 20px;
+pre {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: Arial;
 }
 
 .search {

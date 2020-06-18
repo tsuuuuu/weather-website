@@ -18,9 +18,9 @@ weatherForm.addEventListener('submit', (e) => {
             messageOne.textContent = data.error
         } else {
             messageOne.textContent = data.Location
-            messageTwo.textContent = 'Clima agora: ' + JSON.parse(JSON.stringify(data.Forecast.Clima_Atual)) 
-                                + '   Temperatura atual: ' + JSON.parse(JSON.stringify(data.Forecast.Temperatura_Atual)) 
-                                + '   Chance de chuva: ' + JSON.parse(JSON.stringify(data.Forecast.Chance_de_chuva))
+            messageTwo.textContent = 'Clima agora: ' + JSON.parse(JSON.stringify(data.Forecast.Clima_Atual)) + '\n\n'
+                                    + 'Temperatura atual: ' + JSON.parse(JSON.stringify(data.Forecast.Temperatura_Atual)) + '\n\n'
+                                    + 'Chance de chuva: ' + JSON.parse(JSON.stringify(data.Forecast.Chance_de_chuva))
             console.log(data.Forecast)
         }
     })
