@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
-const geocode = require('./utils/geocode')
+const {geocode, revGeocode} = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = express()
@@ -22,77 +22,100 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Weather app',
-        name: 'Tsu'
+        title: 'Previsão do tempo',
+        name: 'Tsuyoshi'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About me',
-        name: 'Tsu'
+        title: 'Sobre mim',
+        name: 'Tsuyoshi'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        title: 'Help page',
-        name: 'Tsu',
+        title: 'Ajuda',
+        name: 'Tsuyoshi',
         message: 'This is the help page'
     })
 })
 
 app.get('/weather', (req, res) => {
-    if (!req.query.address) {
+    if ((!req.query.address) && (!req.query.coords)) {
         return res.send ({
-            error: "You must provide an address"
+            error: "Você deve fornecer uma localização!"
         })
     }
     
-    const location = req.query.address
-    geocode(location, (error,{latitude, longitude, location} = {}) => {
-        if (error){
-            return res.send(error)
-        } 
-        //console.log(data)
-        forecast(latitude + ',' + longitude, (error, forecastData) => {
+    if (!req.query.coords) {
+        const location = req.query.address
+        geocode(location, (error,{latitude, longitude, location} = {}) => {
+            if (error){
+                return res.send(error)
+            } 
+            //console.log(data)
+            forecast(latitude, longitude, (error, forecastData) => {
+                if (error) {
+                    return res.send (error)
+                }
+                res.send ({
+                    Location: location,
+                    Forecast: forecastData
+                })
+            })
+        })
+    } else {
+        const location = req.query.coords
+        const locArray = location.split(',')
+        const latitude = locArray[0].slice(0,11)
+        const longitude = locArray[1].slice(0,11)
+        //console.log(location)
+        const revGeolocation = revGeocode(latitude,longitude, (error, {city, county}) => {
+            if (error){
+                return res.send(error)
+            }
+            forecast(latitude, longitude, (error, forecastData) => {
             if (error) {
                 return res.send (error)
             }
             res.send ({
-                Location: location,
+                Location: `${city} - ${county}`,
                 Forecast: forecastData
             })
-        })
-    })
-})
-
-app.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({
-            error: "You must provide a search term"
-        })
+        }) 
+        }) 
     }
-
-    console.log(req.query.search)
-    res.send ({
-        products: []
-    })
 })
+
+
+// app.get('/products', (req, res) => {
+//     if (!req.query.search) {
+//         return res.send({
+//             error: "You must provide a search term"
+//         })
+//     }
+
+//     console.log(req.query.search)
+//     res.send ({
+//         products: []
+//     })
+// })
 
 app.get('/help/*', (req, res) => {
     res.render('404', {
         title: 'Error 404',
-        name: 'Tsu',
-        message: 'Error 404 - Help page not found'
+        name: 'Tsuyoshi',
+        message: 'Erro 404 - Página de ajuda não encontrada'
     })
 })
 
 app.get('*', (req, res) => {
     res.render('404', {
         title: 'Error 404',
-        name: 'Tsu',
-        message: 'Error 404 - Page not found'
+        name: 'Tsuyoshi',
+        message: 'Erro 404 - Página não encontrada'
     })
 })
 

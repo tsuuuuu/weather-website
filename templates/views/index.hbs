@@ -3,23 +3,25 @@
 <html>
 
 <head>
-    <title>Weather</title>
-    <link rel="icon" href="/img/weather.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hayashi Weather App</title>
+    <link rel="icon" href="/img/favicon.jpg">
     <link rel="stylesheet" href="/css/styles.css">
-    
+    <link rel="stylesheet" href="/css/all.css">
 </head>
 
 <body>
     <div class="main-content">
     {{>header}}
+    <h1>{{title}}</h1>
 
-    <p>Insert the location and click "Search" to get the weather forecast</p>
+    <p>Insira a localização e clique em "buscar" para obter a previsão do tempo</p>
     <div class="search-form">
         <form>
-            <input type="text" required="">
-            <label>Location</label>
-            <button class="clear-icon" type="reset"></button>
-            <button class="search">Search</button>
+            <input type="search" required="">
+            <label>Localização</label>
+            <button id="search" class="btn-search effect"><div class='insider'></div><i class="fas fa-search"></i> Buscar</button>
+            <button id="location" class="btn-search effect" type="button"><div class='insider'></div><i class="fas fa-map-marked-alt"></i> Minha localização</button>
         </form>
     </div>
 
