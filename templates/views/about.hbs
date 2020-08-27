@@ -4,17 +4,39 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre mim</title>
+    <title>Hayashi Weather App</title>
     <link rel="icon" href="/img/favicon.jpg">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/all.css">
 </head>
 
 <body>
     <div class="main-content">
         {{>header}}
-        <img class ="portrait" src="/img/me.jpg" >
-    </div>
+        <h1>{{title}}</h1>
+        <div class="about">
+            <p>Esta página foi desenvolvida no âmbito de um curso de Node.JS, seguindo as orientações do professor <a href="https://www.udemy.com/user/andrewmead/" target="_blank">Andrew Mead</a>  do Udemy.</p>
+            <p>Todo o conteúdo foi criado através do Visual Studio Code, utilizando o famoso gerenciador de pacotes NPM e o framework <a href="https://www.npmjs.com/package/express" target="_blank">Express</a> para aplicações web.</p>
+            <p>O funcionamento se baseia em duas APIs. A <a href="https://opencagedata.com/api" target="_blank">primeira</a>, é responsável por transformar a localização fornecida pelo usuário em coordenadas de 
+                geolocalização, enquanto a <a href="https://openweathermap.org/api" target="_blank">segunda</a> utiliza estas coordenadas para obter a previsão do tempo em formato JSON.</p>
+            <p>Trata-se de uma aplicação bem simples, mas para poder ser utilizada em casos reais, foi necessária a criação do front end da aplicação.</p>
+            <p>Como não sou especialista em HTML e CSS, peço desculpas pela aparência e responsividade do site. Irei melhorar logo que possível!</p>
+        </div>
 
+        <div class="logos">
+        <div>
+            <div class="about-icons"><i class="fab fa-node-js"></i></div>
+            <div class="about-icons"><i class="fab fa-npm"></i></div>
+            <div class="about-icons"><i class="fab fa-github"></i></div>
+        </div>
+        <div>
+            <div class="about-icons"><i class="fab fa-html5"></i></div>
+            <div class="about-icons"><i class="fab fa-css3-alt"></i></div>
+            <div class="about-icons"><i class="fab fa-git-square"></i></div>
+        </div>
+    </div>
+    </div>
+    
     {{>footer}}
 </body>
 

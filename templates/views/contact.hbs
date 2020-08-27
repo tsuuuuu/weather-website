@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hayashi Weather App</title>
+    <link rel="icon" href="/img/favicon.jpg">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/all.css">
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+        <h1>{{title}}</h1>
+        <div>
+            <div class="contact">
+                <form id="contact-form" name="contact-form">
+                    <label> Seu email:<input type="text" id="_replyto" name="_replyto" required></label>
+                    <label> Mensagem:<textarea name="message" rows="6" required></textarea></label>
+                    <button id="submit-contact" class="btn-search effect" type="submit"><div class='insider'></div>Enviar</button>
+                </form>
+            </div>
+            <div class="social">
+                <div class="social-icon"><a href="https://www.linkedin.com/in/arlindo-hayashi-b3ab4b56/" target="_blank"><i class="fab fa-linkedin"></i><label>LinkedIn</label></a></div>
+                <div class="social-icon"><a href="https://github.com/tsuuuuu" target="_blank"><i class="fab fa-github-square"></i><label>GitHub</label></a></div>
+                <div class="social-icon"><a href="mailto:arlindo.hayashi@gmail.com" target="_blank"><i class="far fa-envelope"></i><label>e-mail</label></a></div>
+            </div>
+        </div>
+    </div>
+    {{>footer}}
+    <script src="/js/validator.js"></script>
+</body>
+
+</html>

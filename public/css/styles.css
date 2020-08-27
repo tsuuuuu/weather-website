@@ -2,7 +2,7 @@ body {
     color: #000000;
     font-family: arial;
     font-weight: 600;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 16px;
     background-image: url("/img/background.jpg");
@@ -15,13 +15,11 @@ body {
 
 .main-content {
     flex-grow: 1;
-    /* background-color: #cacaca4D; */
     padding: 30px;
 }
 
 footer {
     color: #1f1f1f;
-    /* background-color: #cacaca4D; */
     border-top: 1px solid #181818;
     margin-top: 16px;
     padding: 16px 0;
@@ -31,7 +29,6 @@ footer {
 
 header {
     margin-top: 0;
-    /* margin-bottom: 10px; */
     padding: 0 0 10px;
     border-bottom: 1px solid #181818;
     display: block;
@@ -41,10 +38,6 @@ header {
     max-width: 150px;
     height: auto;
 }
-/* 
-#title-text {
-    display: inline-block;
-} */
 
 h1 {
     vertical-align: top;
@@ -58,30 +51,33 @@ h1 {
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-size:16px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 45px;
-    /* margin: 0 0 2em; */
-    /* max-width: 160px;  */
+    margin: 0 10px;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
     width: 160px;
-    top: -50px
+    top: -70px
 }
- 
-.btn:hover { 
-    text-decoration: none; 
+
+.btn:hover {
+    text-decoration: none;
 }
 
 .btn-header {
     letter-spacing: 0;
 }
-.btn-header:hover, .btn-header:active {
+
+.btn-header:hover,
+.btn-header:active {
     letter-spacing: 5px;
 }
-.btn-header:after, .btn-header:before {
+
+.btn-header:after,
+.btn-header:before {
     backface-visibility: hidden;
     border: 1px solid rgba(255, 255, 255, 0);
     bottom: 0px;
@@ -92,12 +88,15 @@ h1 {
     transition: all 280ms ease-in-out;
     width: 0;
 }
-.btn-header:hover:after, .btn-header:hover:before {
+
+.btn-header:hover:after,
+.btn-header:hover:before {
     backface-visibility: hidden;
     border-color: #fff;
     transition: width 350ms ease-in-out;
     width: 70%;
 }
+
 .btn-header:hover:before {
     bottom: auto;
     top: 0;
@@ -109,24 +108,13 @@ h1 {
 }
 
 pre {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    width: 100%;
+    margin: 0 0 30px;
     font-family: sans-serif;
     background-color: #cacaca4D;
-    padding: 30px 20px;
-    display: none;
+    padding: 20px 20px;
+    display: inline-block;
 }
-
-/* .search {
-    border-radius: 12px;
-    padding: 6px 14px;
-    margin-right: 14px;
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    border: 0;
-} */
 
 .btn-search {
     outline: none;
@@ -137,7 +125,7 @@ pre {
     margin: 0 5px;
     cursor: pointer;
     font-size: 16px;
-    background-color: transparent;
+    background-color: #1f1f1f44;
     position: relative;
     border: 2px solid #fff;
     transition: all 0.5s ease;
@@ -146,11 +134,13 @@ pre {
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
 }
+
 .effect {
     border-color: #fff;
     overflow: hidden;
     color: #fff;
 }
+
 .effect .insider {
     background-color: #fff;
     width: 100%;
@@ -163,11 +153,13 @@ pre {
     -o-transform: rotateZ(45deg);
     -ms-transform: rotateZ(45deg);
 }
+
 .effect:hover {
     background-color: #d4d4d4;
     border-color: #fff;
     color: #1f1f1f;
 }
+
 .effect:hover .insider {
     transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
@@ -177,9 +169,8 @@ pre {
     left: 135px;
 }
 
-
-
-.search-form, .clear-icon {
+.search-form,
+.clear-icon {
     position: relative;
     margin: 40px 0;
 }
@@ -191,11 +182,11 @@ pre {
     border: 2px solid #333333;
     border-radius: 12px;
     margin-right: 12px;
-    width: 30%;
+    width: 52%;
     outline: none;
 }
 
-.search-form label{
+.search-form label {
     position: absolute;
     top: 7px;
     left: 8px;
@@ -205,11 +196,316 @@ pre {
     pointer-events: none;
 }
 
-.search-form input:focus ~ label,
-.search-form input:valid ~ label {
+.search-form input:focus~label,
+.search-form input:valid~label {
     top: -12px;
     left: 10px;
     color: #333333;
     font-size: 10px;
     font-weight: bold;
+}
+
+#message {
+    max-width: 770px;
+}
+
+#loader {
+    width: 100%;
+}
+
+#loading {
+    margin-left: 30%;
+    border-radius: 50%;
+}
+
+#weather-icon {
+    padding: 15px 20px 0;
+    height: 100px;
+    width: 100px;
+    margin: 0 0 0 50px;
+    display: block;
+}
+
+.temperature {
+    margin: 10px 16px;
+    font-weight: bolder;
+    font-size: 28px;
+    display: inline-block;
+}
+
+#forecast {
+    padding: 0;
+    font-weight: 600;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 250px;
+    height: 250px;
+    perspective: 1000px;
+    display: none;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #ffffff;
+    color: black;
+}
+
+.flip-card-back {
+    color: black;
+    transform: rotateY(180deg);
+}
+
+.next-days {
+    display: none;
+    margin-left: 4px;
+    width: 550px;
+    height: 250px;
+    background-color: #cacaca4D;
+    position: relative;
+    top: -37px;
+}
+
+.row {
+    display: inline-block;
+    width: 68px;
+    text-align: center;
+}
+
+.row1 {
+    height: 20%;
+    padding-left: 20px;
+}
+
+.row2 {
+    height: 60%;
+    text-align: center;
+}
+
+.row2 img {
+    width: 45px;
+    border-radius: 50%;
+}
+
+/* About */
+
+.about a {
+    text-decoration: none;
+    color: #004483;
+}
+
+.about a:visited {
+    color: #004483;
+}
+
+.about a:hover {
+    color: #d4d4d4;
+}
+
+.about a:active {
+    color: #888888;
+}
+
+.logos {
+    background-color: #cacaca4D;
+}
+
+.about-icons {
+    display: inline-block;
+    width: 30%;
+    margin: 30px 0;
+    text-align: center;
+    font-size: 40px;
+}
+
+/* Contact */
+
+.contact {
+    display: inline-block;
+    width: 40%;
+    margin-top: 30px;
+}
+
+.contact input,
+textarea {
+    display: block;
+    font-family: arial;
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    margin: 10px 0;
+    width: 100%;
+    outline: none;
+}
+
+.contact textarea {
+    resize: none;
+}
+
+.social {
+    display: inline-block;
+    background-color: #cacaca4D;
+    width: 40%;
+    margin: 30px 0 0 60px;
+    padding-left: 60px;
+    text-align: left;
+    font-size: 50px;
+}
+
+.social label {
+    vertical-align: middle;
+    margin-left: 20px;
+    font-size: 30px;
+}
+
+.social-icon {
+    display: block;
+    padding: 20px 0;
+}
+
+.social a {
+    text-decoration: none;
+    color: #004483;
+}
+
+.social a:visited {
+    color: #004483;
+}
+
+.social a:hover {
+    color: #000000;
+}
+
+.social a:active {
+    color: #888888;
+}
+
+@media only screen and (max-width: 900px) {
+    .next-days {
+        display: none;
+        margin-left: 0;
+        position: relative;
+        top: 0;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    body {
+        text-align: center;
+    }
+
+    header {
+        padding: 0 0 30px;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .btn {
+        top: 10px;
+        width: 100%;
+        display: block;
+        margin: 10px 0;
+    }
+
+    .btn-header {
+        top: 10px;
+        display: block;
+        margin: 10px 0;
+    }
+
+    .search-form input {
+        width: 100%;
+    }
+
+    #message {
+        max-width: 88%;
+        font-size: 12px;
+    }
+
+    #loading {
+        margin: auto;
+    }
+    .flip-card {
+        width: 100%;
+    }
+
+    #weather-icon {
+        margin: auto;
+    }
+
+    .next-days {
+        width: 100%;
+        margin: 20px 0;
+        top: 15px;
+        overflow-x: scroll;
+    }
+
+    .row1, .row2 {
+        width: 550px;
+    }
+
+    .row1 {
+        padding-left: 0;
+    }
+
+    .contact, .social {
+        display: block;
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .contact input,
+    textarea {
+        display: block;
+        font-family: arial;
+        font-size: 14px;
+        padding: 5px;
+        border: 1px solid #333333;
+        border-radius: 12px;
+        margin: 10px 0;
+        width: 100%;
+        outline: none;
+    }
+
+    .contact .btn-search,
+    .effect {
+        width: 30%;
+        min-width: 160px;
+        margin: 20px auto 0;
+    }
+
+    .social {
+        text-align: center;
+        padding: 0;
+    }
+
+    .social label {
+        display: none;
+    }
 }

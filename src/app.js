@@ -29,7 +29,14 @@ app.get('', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'Sobre mim',
+        title: 'Sobre esta página',
+        name: 'Tsuyoshi'
+    })
+})
+
+app.get('/contact', (req, res) => {
+    res.render('contact', {
+        title: 'Contato',
         name: 'Tsuyoshi'
     })
 })
