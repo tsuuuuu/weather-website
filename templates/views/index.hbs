@@ -1,116 +1,49 @@
-<!DOCTYPE html>
+<div class="search-form">
+    <form id="search-form">
+        <input id="search" type="search" required />
+        <label for="search">Localização</label>
+        <button class="btn-search effect" type="submit">
+            <div class="insider"></div>Buscar <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button id="my-location" class="btn-search effect" type="button">
+            <div class="insider"></div>Minha localização <i class="fa-solid fa-map-location-dot"></i>
+        </button>
+    </form>
+</div>
 
-<html>
+<pre id="message">Insira a localização e clique em "buscar".</pre>
+<div id="loader" hidden>
+    <img id="loading" src="/img/weather.gif" alt="Carregando" />
+</div>
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hayashi Weather App</title>
-    <link rel="icon" href="/img/favicon.jpg">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/all.css">
-</head>
-
-<body>
-    <div class="main-content">
-        {{>header}}
-        <h1>{{title}}</h1>
-
-        <div class="search-form">
-            <form>
-                <input type="search" required="">
-                <label>Localização</label>
-                <button id="search" class="btn-search effect"><div class='insider'></div>Buscar <i class="fas fa-search"></i></button>
-                <button id="location" class="btn-search effect" type="button"><div class='insider'></div>Minha localização <i class="fas fa-map-marked-alt"></i></button>
-            </form>
-        </div>
-
-        <pre id="message">Insira a localização e clique em "buscar".</pre>
-        <div id="loader" style="display: none">
-            <img id="loading" src="/img/weather.gif" style="width: 300px"> 
-        </div>
-        
-        <div>
-            <div id="flip-card" class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img id="weather-icon">
-                        <div class="temp">
-                            <p class="temperature">Mín</p>
-                            <p id="min" class="temperature"></p>
-                        </div>
-                        <div class="temp">
-                            <p class="temperature">Máx</p>
-                            <p id="max" class="temperature"></p> 
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <pre id="forecast"></pre>
-                    </div>
+<div>
+    <div id="flip-card" class="flip-card" hidden>
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img id="weather-icon" alt="" />
+                <div class="temp">
+                    <p class="temperature">Mín</p>
+                    <p id="min" class="temperature"></p>
+                </div>
+                <div class="temp">
+                    <p class="temperature">Máx</p>
+                    <p id="max" class="temperature"></p>
                 </div>
             </div>
-            <div id="next-days" class="next-days">
-                <div class="row1">
-                    <div class="row"><p id="day1"></p></div>
-                    <div class="row"><p id="day2"></p></div>
-                    <div class="row"><p id="day3"></p></div>
-                    <div class="row"><p id="day4"></p></div>
-                    <div class="row"><p id="day5"></p></div>
-                    <div class="row"><p id="day6"></p></div>
-                    <div class="row"><p id="day7"></p></div>
-                </div>
-                <div class="row1">
-                    <div class="row"><p id="day-w1"></p></div>
-                    <div class="row"><p id="day-w2"></p></div>
-                    <div class="row"><p id="day-w3"></p></div>
-                    <div class="row"><p id="day-w4"></p></div>
-                    <div class="row"><p id="day-w5"></p></div>
-                    <div class="row"><p id="day-w6"></p></div>
-                    <div class="row"><p id="day-w7"></p></div>
-                </div>
-                <div class="row2">
-                    <div class="row">
-                        <img id="day1-icon">
-                        <p id="d1-min"></p>
-                        <p id="d1-max"></p>
-                    </div>
-                    <div class="row">
-                        <img id="day2-icon">
-                        <p id="d2-min"></p>
-                        <p id="d2-max"></p>
-                    </div>
-                    <div class="row">
-                        <img id="day3-icon">
-                        <p id="d3-min"></p>
-                        <p id="d3-max"></p>
-                    </div>
-                    <div class="row">
-                        <img id="day4-icon">
-                        <p id="d4-min"></p>
-                        <p id="d4-max"></p>
-                    </div>
-                    <div class="row">
-                        <img id="day5-icon">
-                        <p id="d5-min"></p>
-                        <p id="d5-max"></p>
-                    </div>
-                    <div class="row">
-                        <img id="day6-icon">
-                        <p id="d6-min"></p>
-                        <p id="d6-max"></p>
-                    </div>
-                    <div class="row">
-                        <img id="day7-icon">
-                        <p id="d7-min"></p>
-                        <p id="d7-max"></p>
-                    </div>
-                </div>
+            <div class="flip-card-back">
+                <pre id="forecast"></pre>
             </div>
         </div>
-
     </div>
-    
-    {{>footer}}
-    <script src="/js/app.js"></script>
-</body>
+    <div id="next-days" class="next-days" hidden></div>
+</div>
 
-</html>
+<template id="day-template">
+    <div class="day">
+        <p class="day-date"></p>
+        <p class="day-weekday"></p>
+        <img class="day-icon" alt="" />
+        <p class="day-min"></p>
+        <p class="day-max"></p>
+    </div>
+</template>

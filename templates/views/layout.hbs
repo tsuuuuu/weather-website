@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{title}} | Hayashi Weather App</title>
+        <link rel="icon" href="/img/favicon.jpg" />
+        <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        {{#if script}}
+            <script type="module" src="{{script}}"></script>
+        {{/if}}
+    </head>
+
+    <body>
+        <div class="main-content">
+            {{> header}}
+            <h1>{{title}}</h1>
+            {{{body}}}
+        </div>
+
+        {{> footer}}
+    </body>
+</html>
