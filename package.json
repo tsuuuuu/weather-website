@@ -1,22 +1,38 @@
 {
-  "name": "web-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start": "node src/app.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/app.js -e js,hbs"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "express": "^4.17.1",
-    "hbs": "^4.1.1",
-    "request": "^2.88.2"
-  },
-  "devDependencies": {
-    "env-cmd": "^10.1.0"
-  }
+    "name": "weather-website",
+    "version": "2.0.0",
+    "description": "Hayashi Weather App: 7-day weather forecast built with Express and Handlebars",
+    "type": "module",
+    "main": "src/server.js",
+    "engines": {
+        "node": ">=20"
+    },
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "node --watch src/server.js",
+        "test": "node --test",
+        "lint": "eslint .",
+        "format": "prettier --write .",
+        "format:check": "prettier --check ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tsuuuuu/weather-website.git"
+    },
+    "author": "Tsuyoshi",
+    "license": "ISC",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.7.2",
+        "express": "^5.1.0",
+        "hbs": "^4.3.1"
+    },
+    "overrides": {
+        "handlebars": "^4.7.10"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.28.0",
+        "eslint": "^9.28.0",
+        "globals": "^16.2.0",
+        "prettier": "^3.5.3"
+    }
 }

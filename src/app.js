@@ -1,131 +1,41 @@
-const path = require('path')
-const express = require('express')
-const hbs = require('hbs')
-const {geocode, revGeocode} = require('./utils/geocode')
-const forecast = require('./utils/forecast')
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import express from 'express'
+import hbs from 'hbs'
+import { pagesRouter } from './routes/pages.js'
+import { weatherRouter } from './routes/weather.js'
+import { geocode, reverseGeocode } from './services/geocode.js'
+import { forecast } from './services/forecast.js'
 
-const app = express()
-const port = process.env.PORT || 3000
+const rootDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..')
 
-// Define paths for Express config
-const publicDirectoryPath = path.join(__dirname, '../public')
-const viewsPath = path.join(__dirname, '../templates/views')
-const partialsPath = path.join(__dirname, '../templates/partials')
+const defaultServices = { geocode, reverseGeocode, forecast }
 
-// Setup handlebars engine and views location
-app.set('view engine', 'hbs')
-app.set('views', viewsPath)
-hbs.registerPartials(partialsPath)
+// Services can be swapped out in tests so no real API is called
+export const createApp = (services = defaultServices) => {
+    const app = express()
 
-// Setup static directory to serve
-app.use(express.static(publicDirectoryPath))
+    // Handlebars views; templates/views/layout.hbs wraps every page
+    app.set('view engine', 'hbs')
+    app.set('views', path.join(rootDir, 'templates/views'))
+    hbs.registerPartials(path.join(rootDir, 'templates/partials'))
+    app.locals.name = 'Tsuyoshi'
 
-app.get('', (req, res) => {
-    res.render('index', {
-        title: 'Previsão do tempo',
-        name: 'Tsuyoshi'
-    })
-})
+    app.use(express.static(path.join(rootDir, 'public')))
+    app.use(
+        '/vendor/fontawesome',
+        express.static(path.join(rootDir, 'node_modules/@fortawesome/fontawesome-free')),
+    )
 
-app.get('/about', (req, res) => {
-    res.render('about', {
-        title: 'Sobre esta página',
-        name: 'Tsuyoshi'
-    })
-})
+    app.use(pagesRouter())
+    app.use(weatherRouter(services))
 
-app.get('/contact', (req, res) => {
-    res.render('contact', {
-        title: 'Contato',
-        name: 'Tsuyoshi'
-    })
-})
-
-app.get('/help', (req, res) => {
-    res.render('help', {
-        title: 'Ajuda',
-        name: 'Tsuyoshi',
-        message: 'This is the help page'
-    })
-})
-
-app.get('/weather', (req, res) => {
-    if ((!req.query.address) && (!req.query.coords)) {
-        return res.send ({
-            error: "Você deve fornecer uma localização!"
+    app.use((req, res) => {
+        res.status(404).render('404', {
+            title: 'Erro 404',
+            message: 'Erro 404 - Página não encontrada',
         })
-    }
-    
-    if (!req.query.coords) {
-        const location = req.query.address
-        geocode(location, (error,{latitude, longitude, location} = {}) => {
-            if (error){
-                return res.send(error)
-            } 
-            //console.log(data)
-            forecast(latitude, longitude, (error, forecastData) => {
-                if (error) {
-                    return res.send (error)
-                }
-                res.send ({
-                    Location: location,
-                    Forecast: forecastData
-                })
-            })
-        })
-    } else {
-        const location = req.query.coords
-        const locArray = location.split(',')
-        const latitude = locArray[0].slice(0,11)
-        const longitude = locArray[1].slice(0,11)
-        //console.log(location)
-        const revGeolocation = revGeocode(latitude,longitude, (error, {city, county}) => {
-            if (error){
-                return res.send(error)
-            }
-            forecast(latitude, longitude, (error, forecastData) => {
-            if (error) {
-                return res.send (error)
-            }
-            res.send ({
-                Location: `${city} - ${county}`,
-                Forecast: forecastData
-            })
-        }) 
-        }) 
-    }
-})
-
-
-// app.get('/products', (req, res) => {
-//     if (!req.query.search) {
-//         return res.send({
-//             error: "You must provide a search term"
-//         })
-//     }
-
-//     console.log(req.query.search)
-//     res.send ({
-//         products: []
-//     })
-// })
-
-app.get('/help/*', (req, res) => {
-    res.render('404', {
-        title: 'Error 404',
-        name: 'Tsuyoshi',
-        message: 'Erro 404 - Página de ajuda não encontrada'
     })
-})
 
-app.get('*', (req, res) => {
-    res.render('404', {
-        title: 'Error 404',
-        name: 'Tsuyoshi',
-        message: 'Erro 404 - Página não encontrada'
-    })
-})
-
-app.listen(port, () => {
-    console.log('Server is up on port ' + port)
-})
+    return app
+}

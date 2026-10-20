@@ -1,3 +1,7 @@
+[hidden] {
+    display: none !important;
+}
+
 body {
     color: #000000;
     font-family: arial;
@@ -5,7 +9,7 @@ body {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 16px;
-    background-image: url("/img/background.jpg");
+    background-image: url('/img/background.jpg');
     background-size: cover;
 
     display: flex;
@@ -34,6 +38,10 @@ header {
     display: block;
 }
 
+header nav {
+    display: inline;
+}
+
 .logo {
     max-width: 150px;
     height: auto;
@@ -60,7 +68,7 @@ h1 {
     text-transform: uppercase;
     text-align: center;
     width: 160px;
-    top: -70px
+    top: -70px;
 }
 
 .btn:hover {
@@ -81,7 +89,7 @@ h1 {
     backface-visibility: hidden;
     border: 1px solid rgba(255, 255, 255, 0);
     bottom: 0px;
-    content: " ";
+    content: ' ';
     display: block;
     margin: 0 auto;
     position: relative;
@@ -111,7 +119,7 @@ pre {
     width: 100%;
     margin: 0 0 30px;
     font-family: sans-serif;
-    background-color: #cacaca4D;
+    background-color: #cacaca4d;
     padding: 20px 20px;
     display: inline-block;
 }
@@ -129,10 +137,6 @@ pre {
     position: relative;
     border: 2px solid #fff;
     transition: all 0.5s ease;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
 }
 
 .effect {
@@ -148,10 +152,6 @@ pre {
     position: absolute;
     left: -135px;
     transform: rotateZ(45deg);
-    -webkit-transform: rotateZ(45deg);
-    -moz-transform: rotateZ(45deg);
-    -o-transform: rotateZ(45deg);
-    -ms-transform: rotateZ(45deg);
 }
 
 .effect:hover {
@@ -162,10 +162,6 @@ pre {
 
 .effect:hover .insider {
     transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
     left: 135px;
 }
 
@@ -192,12 +188,12 @@ pre {
     left: 8px;
     font-size: 14px;
     color: #888888;
-    transition: .5s;
+    transition: 0.5s;
     pointer-events: none;
 }
 
-.search-form input:focus~label,
-.search-form input:valid~label {
+.search-form input:focus ~ label,
+.search-form input:valid ~ label {
     top: -12px;
     left: 10px;
     color: #333333;
@@ -214,6 +210,7 @@ pre {
 }
 
 #loading {
+    width: 300px;
     margin-left: 30%;
     border-radius: 50%;
 }
@@ -243,7 +240,8 @@ pre {
     width: 250px;
     height: 250px;
     perspective: 1000px;
-    display: none;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .flip-card-inner {
@@ -264,8 +262,6 @@ pre {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden;
-    /* Safari */
     backface-visibility: hidden;
 }
 
@@ -280,32 +276,26 @@ pre {
 }
 
 .next-days {
-    display: none;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    vertical-align: top;
     margin-left: 4px;
     width: 550px;
     height: 250px;
-    background-color: #cacaca4D;
-    position: relative;
-    top: -37px;
+    background-color: #cacaca4d;
 }
 
-.row {
-    display: inline-block;
-    width: 68px;
+.day {
+    flex: 0 0 68px;
     text-align: center;
 }
 
-.row1 {
-    height: 20%;
-    padding-left: 20px;
+.day p {
+    margin: 8px 0;
 }
 
-.row2 {
-    height: 60%;
-    text-align: center;
-}
-
-.row2 img {
+.day img {
     width: 45px;
     border-radius: 50%;
 }
@@ -330,7 +320,7 @@ pre {
 }
 
 .logos {
-    background-color: #cacaca4D;
+    background-color: #cacaca4d;
 }
 
 .about-icons {
@@ -368,7 +358,7 @@ textarea {
 
 .social {
     display: inline-block;
-    background-color: #cacaca4D;
+    background-color: #cacaca4d;
     width: 40%;
     margin: 30px 0 0 60px;
     padding-left: 60px;
@@ -376,7 +366,7 @@ textarea {
     font-size: 50px;
 }
 
-.social label {
+.social span {
     vertical-align: middle;
     margin-left: 20px;
     font-size: 30px;
@@ -406,10 +396,7 @@ textarea {
 
 @media only screen and (max-width: 900px) {
     .next-days {
-        display: none;
         margin-left: 0;
-        position: relative;
-        top: 0;
     }
 }
 
@@ -462,19 +449,12 @@ textarea {
     .next-days {
         width: 100%;
         margin: 20px 0;
-        top: 15px;
-        overflow-x: scroll;
+        justify-content: flex-start;
+        overflow-x: auto;
     }
 
-    .row1, .row2 {
-        width: 550px;
-    }
-
-    .row1 {
-        padding-left: 0;
-    }
-
-    .contact, .social {
+    .contact,
+    .social {
         display: block;
         width: 80%;
         margin: 20px auto;
@@ -505,7 +485,7 @@ textarea {
         padding: 0;
     }
 
-    .social label {
+    .social span {
         display: none;
     }
 }
