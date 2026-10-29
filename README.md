@@ -1,6 +1,8 @@
 # Hayashi Weather
 
-Current conditions, a 24-hour chart and a 7-day forecast for any city, with a sky in the background that changes with the weather and the time of day.
+**Live:** https://tsuuuuu.github.io/weather-website/
+
+Current conditions, an hourly chart and a 7-day forecast for any city, with a sky in the background that changes with the weather and the time of day.
 
 Version 2 is a rewrite as a static React app. It started as a project for Andrew Mead's Node.js course on Udemy; version 1 (Express + Handlebars) is in the git history.
 
@@ -8,7 +10,8 @@ Version 2 is a rewrite as a static React app. It started as a project for Andrew
 
 - City search with autocomplete, plus "use my location"
 - Current conditions: temperature, feels like, humidity, wind, UV index, pressure, visibility, sunrise and sunset
-- Hourly chart for the next 24 hours, or for any day you pick in the 7-day list
+- Hourly chart centered on a live "now" marker (12 hours back, 24 ahead), or any day you pick in the 7-day list
+- English, Portuguese and Spanish, following the browser language
 - Favorites and recent places, saved in the browser
 - Shareable links: the address bar always points to the place you are viewing
 - °C / °F toggle
@@ -46,7 +49,11 @@ Then open the address Vite prints (http://localhost:5173 by default).
 
 ## Deploying
 
-`npm run build` produces a fully static site in `dist/`. It uses relative paths, so it can be hosted anywhere, including a GitHub Pages sub-path, Netlify or Cloudflare Pages.
+The site is live at **https://tsuuuuu.github.io/weather-website/**.
+
+Every push to `master` runs the tests, builds the site and publishes it to GitHub Pages (see `.github/workflows/deploy.yml`). To redeploy without a new commit, run the workflow from the repository's Actions tab.
+
+`npm run build` produces a fully static site in `dist/`. It uses relative paths, so it can also be hosted anywhere else, such as Netlify or Cloudflare Pages.
 
 ## Layout
 
