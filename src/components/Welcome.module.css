@@ -1,0 +1,82 @@
+.welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    max-width: 620px;
+    margin: 8vh auto 0;
+    padding: 48px 32px;
+    text-align: center;
+}
+
+.title {
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.lead {
+    max-width: 460px;
+    color: var(--text-muted);
+    font-size: 17px;
+}
+
+.locate {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 48px;
+    margin-top: 6px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 999px;
+    background: #fff;
+    color: #14213d;
+    font-weight: 600;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.locate:hover:not(:disabled) {
+    box-shadow: 0 6px 24px rgb(0 0 0 / 0.25);
+}
+
+.locate:active {
+    transform: scale(0.97);
+}
+
+.locate:disabled {
+    cursor: progress;
+    opacity: 0.8;
+}
+
+.error {
+    color: var(--danger);
+    font-size: 14px;
+}
+
+.suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text-subtle);
+}
+
+.suggestions button {
+    height: 32px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    transition: background 0.2s ease;
+}
+
+.suggestions button:hover {
+    background: var(--surface-hover);
+}

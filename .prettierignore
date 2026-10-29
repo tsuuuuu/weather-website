@@ -1,4 +1,2 @@
 package-lock.json
-public/img
-# Prettier's Handlebars parser rewrites attribute quotes and fails on partials
-templates
+dist
