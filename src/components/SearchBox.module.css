@@ -1,0 +1,122 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 6px 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.field:focus-within {
+    background: var(--surface-strong);
+    border-color: rgb(255 255 255 / 0.35);
+}
+
+.searchIcon {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0 10px;
+    border: 0;
+    background: transparent;
+    font-size: 15px;
+}
+
+.input::placeholder {
+    color: var(--text-subtle);
+}
+
+.input:focus-visible {
+    outline: none;
+}
+
+.locate {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.locate:hover:not(:disabled) {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+
+.locate:disabled {
+    cursor: progress;
+}
+
+.spinning {
+    animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.list {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgb(20 28 48 / 0.92);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow);
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    padding: 9px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.option[aria-selected='true'] {
+    background: var(--surface-hover);
+}
+
+.optionName {
+    font-weight: 500;
+}
+
+.optionDetails,
+.status {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.status {
+    padding: 9px 12px;
+}

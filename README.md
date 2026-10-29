@@ -1,72 +1,62 @@
-# Hayashi Weather App
+# Hayashi Weather
 
-A 7-day weather forecast site in Portuguese. I built it while taking Andrew Mead's Node.js course on Udemy.
+Current conditions, a 24-hour chart and a 7-day forecast for any city, with a sky in the background that changes with the weather and the time of day.
 
-Search for a place, or use the browser's location, to see today's weather and the next 7 days.
+Version 2 is a rewrite as a static React app. It started as a project for Andrew Mead's Node.js course on Udemy; version 1 (Express + Handlebars) is in the git history.
 
-## Stack
+## Features
 
-- [Express 5](https://expressjs.com/) with [Handlebars](https://github.com/pillarjs/hbs) templates
-- [Open-Meteo](https://open-meteo.com/) for the forecast and place search
-- [Nominatim](https://nominatim.org/) (OpenStreetMap) to turn the browser's coordinates into a city name
+- City search with autocomplete, plus "use my location"
+- Current conditions: temperature, feels like, humidity, wind, UV index, pressure, visibility, sunrise and sunset
+- Hourly chart for the next 24 hours, or for any day you pick in the 7-day list
+- Favorites and recent places, saved in the browser
+- Shareable links: the address bar always points to the place you are viewing
+- °C / °F toggle
+- Animated background: clear, cloudy, rain, storm, snow and fog skies, with dawn, dusk and starry night variants
+- Respects "reduce motion" settings; works on phones
 
-None of these APIs need a key, so there is nothing to configure.
+## Data sources
+
+- [Open-Meteo](https://open-meteo.com/) for forecasts and place search
+- [Nominatim](https://nominatim.org/) (© OpenStreetMap contributors) to name the place when you use your location
+
+Neither needs an API key, and the browser calls them directly, so there is no backend.
 
 ## Running it
 
-Requires Node.js 20 or newer.
+Requires Node.js 20.19 or newer.
 
 ```bash
 npm install
-npm run dev      # restarts on code changes
-npm start        # production
+npm run dev
 ```
 
-Then open http://localhost:3000. Set `PORT` to use a different port.
+Then open the address Vite prints (http://localhost:5173 by default).
 
 ## Scripts
 
-| Script           | What it does                                                 |
-| ---------------- | ------------------------------------------------------------ |
-| `npm test`       | Runs the tests with Node's built-in test runner (no network) |
-| `npm run lint`   | Runs ESLint                                                  |
-| `npm run format` | Formats everything with Prettier                             |
+| Script            | What it does                                        |
+| ----------------- | --------------------------------------------------- |
+| `npm run dev`     | Starts the dev server with hot reload               |
+| `npm run build`   | Type-checks and builds the static site into `dist/` |
+| `npm run preview` | Serves the built site locally                       |
+| `npm test`        | Runs the tests with Vitest (no network)             |
+| `npm run lint`    | Runs ESLint                                         |
+| `npm run format`  | Formats everything with Prettier                    |
+
+## Deploying
+
+`npm run build` produces a fully static site in `dist/`. It uses relative paths, so it can be hosted anywhere, including a GitHub Pages sub-path, Netlify or Cloudflare Pages.
 
 ## Layout
 
 ```
 src/
-  server.js           starts the HTTP server
-  app.js              Express setup (views, static files, routes)
-  routes/             page routes and the /weather JSON endpoint
-  services/           calls to Open-Meteo and Nominatim
-  lib/                formatting, weather codes, fetch helper
-templates/
-  views/layout.hbs    shared page shell
-  views/*.hbs         one template per page
-  partials/           header and footer
-public/               CSS, browser JavaScript and images
-test/
+  App.tsx              page layout and app state
+  api/                 Open-Meteo and Nominatim clients
+  hooks/               forecast loading, search-as-you-type, localStorage state
+  lib/                 formatting, weather codes, sky themes, shareable URLs
+  components/          UI components, each with its own CSS module
+  styles/global.css    design tokens and shared styles
+  test/                test setup and fixtures
 ```
-
-### `GET /weather`
-
-`?address=Campinas` or `?lat=-22.9&lon=-47.06`
-
-```json
-{
-    "location": "Campinas, São Paulo, Brasil",
-    "today": { "date": "20/10", "description": "Céu limpo", "temperature": "24.4°C", "...": "..." },
-    "days": [
-        {
-            "date": "21/10",
-            "weekday": "Qua",
-            "icon": "/img/weather/sun-weather.gif",
-            "min": "18°C",
-            "max": "29°C"
-        }
-    ]
-}
-```
-
-Errors return a 4xx/5xx status with `{ "error": "message" }`.

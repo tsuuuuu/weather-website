@@ -1,0 +1,139 @@
+.dialog {
+    width: min(560px, calc(100vw - 32px));
+    max-height: calc(100vh - 48px);
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: rgb(20 28 48 / 0.94);
+    color: var(--text);
+    box-shadow: 0 24px 80px rgb(0 0 0 / 0.45);
+    backdrop-filter: blur(24px);
+}
+
+.dialog::backdrop {
+    background: rgb(5 10 25 / 0.55);
+    backdrop-filter: blur(4px);
+}
+
+.dialog[open] {
+    animation: appear 0.2s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 26px 28px 28px;
+    line-height: 1.6;
+}
+
+.content p {
+    color: var(--text-muted);
+}
+
+.content a {
+    color: #9ed0ff;
+}
+
+.content h3 {
+    margin: 8px 0 0;
+    font-size: 16px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h2 {
+    font-size: 22px;
+    letter-spacing: -0.01em;
+}
+
+.close {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+}
+
+.close:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.form input,
+.form textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+    background: rgb(255 255 255 / 0.06);
+    font-size: 15px;
+    resize: vertical;
+}
+
+.form input:focus,
+.form textarea:focus {
+    outline: none;
+    border-color: var(--focus);
+}
+
+.submit {
+    align-self: flex-start;
+    height: 42px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 999px;
+    background: #fff;
+    color: #14213d;
+    font-weight: 600;
+}
+
+.social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 6px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid var(--border);
+    list-style: none;
+}
+
+.social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.social a:hover {
+    color: #9ed0ff;
+}

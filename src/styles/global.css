@@ -1,0 +1,119 @@
+/* Registered so the sky gradient can animate smoothly between themes */
+@property --sky-top {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #1b2550;
+}
+@property --sky-middle {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #2d3a73;
+}
+@property --sky-bottom {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #4a5a96;
+}
+
+:root {
+    --text: #ffffff;
+    --text-muted: rgb(255 255 255 / 0.72);
+    --text-subtle: rgb(255 255 255 / 0.55);
+    --surface: rgb(10 20 40 / 0.22);
+    --surface-strong: rgb(10 20 40 / 0.38);
+    --surface-hover: rgb(255 255 255 / 0.12);
+    --border: rgb(255 255 255 / 0.16);
+    --accent: #fdb813;
+    --focus: #9ed0ff;
+    --danger: #ffb4a8;
+    --radius: 20px;
+    --radius-small: 12px;
+    --shadow: 0 10px 40px rgb(0 0 0 / 0.18);
+    --font:
+        'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+    color-scheme: dark;
+    font-family: var(--font);
+    color: var(--text);
+    background: #1b2550;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'tnum' 1;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    line-height: 1.5;
+    /* No background here: it would paint over the fixed sky layer (z-index -1).
+       The page color lives on :root, which is drawn behind everything. */
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Frosted-glass panel used by every section */
+.card {
+    padding: 22px 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    backdrop-filter: blur(20px) saturate(140%);
+    box-shadow: var(--shadow);
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
