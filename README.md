@@ -40,14 +40,14 @@ Then open the address Vite prints (http://localhost:5173 by default).
 
 ## Scripts
 
-| Script            | What it does                                        |
-| ----------------- | --------------------------------------------------- |
-| `npm run dev`     | Starts the dev server with hot reload               |
-| `npm run build`   | Type-checks and builds the static site into `dist/` |
-| `npm run preview` | Serves the built site locally                       |
-| `npm test`        | Runs the tests with Vitest (no network)             |
-| `npm run lint`    | Runs ESLint                                         |
-| `npm run format`  | Formats everything with Prettier                    |
+| Script            | What it does                                                          |
+| ----------------- | --------------------------------------------------------------------- |
+| `npm run dev`     | Starts the dev server with hot reload                                 |
+| `npm run build`   | Type-checks and builds the static site into `dist/`                   |
+| `npm run preview` | Serves the built site locally                                         |
+| `npm test`        | Runs the tests with Vitest (no network); see [TESTING.md](TESTING.md) |
+| `npm run lint`    | Runs ESLint                                                           |
+| `npm run format`  | Formats everything with Prettier                                      |
 
 ## Deploying
 

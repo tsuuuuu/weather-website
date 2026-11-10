@@ -27,6 +27,8 @@ Run test, lint, format check and build before committing.
 
 ## Testing
 
+See TESTING.md for the full guide: what each test file covers, how mocks are set up, conventions for new tests and what still needs manual checks.
+
 - Shared fixtures are in `src/test/fixtures.ts`: Campinas (UTC-3) at 14:15 local time on 29 Oct 2026, with yesterday included as with `past_days=1`.
 - App tests fake only `Date` (`vi.useFakeTimers({ toFake: ['Date'] })`) so user events still work, and set `navigator.languages` to choose the language.
 - Vitest globals are off: import `describe`/`test`/`expect`/`vi` explicitly.
