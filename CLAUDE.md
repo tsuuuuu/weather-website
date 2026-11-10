@@ -1,6 +1,6 @@
 # Hayashi Weather
 
-Static React + TypeScript weather app (Vite). There is no backend: the browser calls Open-Meteo (forecast, place search) and Nominatim (reverse geocoding) directly, and neither needs an API key. Live at https://tsuuuuu.github.io/weather-website/. See README.md for features and folder layout, and PRODUCT.md for the product's goals, principles, non-goals and roadmap. Check new features against PRODUCT.md's principles and non-goals.
+Static React + TypeScript weather app (Vite). There is no backend: the browser calls Open-Meteo (forecast, place search) and Nominatim (reverse geocoding) directly, and neither needs an API key. Live at https://tsuuuuu.github.io/weather-website/. See README.md for features and folder layout, ARCHITECTURE.md for how the app is structured and why, and PRODUCT.md for the product's goals, principles, non-goals and roadmap. Check new features against PRODUCT.md's principles and non-goals.
 
 ## Commands
 

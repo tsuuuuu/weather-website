@@ -6,7 +6,7 @@ Current conditions, an hourly chart and a 7-day forecast for any city, with a sk
 
 Version 2 is a rewrite as a static React app. It started as a project for Andrew Mead's Node.js course on Udemy; version 1 (Express + Handlebars) is in the git history.
 
-For the product's goals, principles and roadmap, see [PRODUCT.md](PRODUCT.md).
+For the product's goals, principles and roadmap, see [PRODUCT.md](PRODUCT.md). For how the app is structured and why, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Features
 
