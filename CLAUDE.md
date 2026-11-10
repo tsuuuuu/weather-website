@@ -1,6 +1,6 @@
 # Hayashi Weather
 
-Static React + TypeScript weather app (Vite). There is no backend: the browser calls Open-Meteo (forecast, place search) and Nominatim (reverse geocoding) directly, and neither needs an API key. Live at https://tsuuuuu.github.io/weather-website/. See README.md for features and folder layout.
+Static React + TypeScript weather app (Vite). There is no backend: the browser calls Open-Meteo (forecast, place search) and Nominatim (reverse geocoding) directly, and neither needs an API key. Live at https://tsuuuuu.github.io/weather-website/. See README.md for features and folder layout, ARCHITECTURE.md for how the app is structured and why, and PRODUCT.md for the product's goals, principles, non-goals and roadmap. Check new features against PRODUCT.md's principles and non-goals.
 
 ## Commands
 
@@ -26,6 +26,8 @@ Run test, lint, format check and build before committing.
 - localStorage access goes through `readStored` / `writeStored` / `useStoredState` (they tolerate blocked storage). Keys are in `STORAGE_KEYS`.
 
 ## Testing
+
+See TESTING.md for the full guide: what each test file covers, how mocks are set up, conventions for new tests and what still needs manual checks.
 
 - Shared fixtures are in `src/test/fixtures.ts`: Campinas (UTC-3) at 14:15 local time on 29 Oct 2026, with yesterday included as with `past_days=1`.
 - App tests fake only `Date` (`vi.useFakeTimers({ toFake: ['Date'] })`) so user events still work, and set `navigator.languages` to choose the language.

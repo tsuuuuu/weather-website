@@ -6,6 +6,8 @@ Current conditions, an hourly chart and a 7-day forecast for any city, with a sk
 
 Version 2 is a rewrite as a static React app. It started as a project for Andrew Mead's Node.js course on Udemy; version 1 (Express + Handlebars) is in the git history.
 
+For the product's goals, principles and roadmap, see [PRODUCT.md](PRODUCT.md). For how the app is structured and why, see [ARCHITECTURE.md](ARCHITECTURE.md).
+
 ## Features
 
 - City search with autocomplete, plus "use my location"
@@ -38,14 +40,14 @@ Then open the address Vite prints (http://localhost:5173 by default).
 
 ## Scripts
 
-| Script            | What it does                                        |
-| ----------------- | --------------------------------------------------- |
-| `npm run dev`     | Starts the dev server with hot reload               |
-| `npm run build`   | Type-checks and builds the static site into `dist/` |
-| `npm run preview` | Serves the built site locally                       |
-| `npm test`        | Runs the tests with Vitest (no network)             |
-| `npm run lint`    | Runs ESLint                                         |
-| `npm run format`  | Formats everything with Prettier                    |
+| Script            | What it does                                                          |
+| ----------------- | --------------------------------------------------------------------- |
+| `npm run dev`     | Starts the dev server with hot reload                                 |
+| `npm run build`   | Type-checks and builds the static site into `dist/`                   |
+| `npm run preview` | Serves the built site locally                                         |
+| `npm test`        | Runs the tests with Vitest (no network); see [TESTING.md](TESTING.md) |
+| `npm run lint`    | Runs ESLint                                                           |
+| `npm run format`  | Formats everything with Prettier                                      |
 
 ## Deploying
 

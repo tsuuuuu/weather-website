@@ -8,6 +8,7 @@ import { placeFromUrl, placeToSearch, samePlace } from './placeUrl'
 import { pickSky } from './sky'
 import { weatherKind, weatherLabel } from './weatherCodes'
 import { en } from '../i18n/en'
+import { es } from '../i18n/es'
 import { pt } from '../i18n/pt'
 
 describe('format', () => {
@@ -98,8 +99,10 @@ describe('weather codes', () => {
     })
 
     test('every language translates every code', () => {
-        for (const code of Object.keys(en.weather)) {
-            expect(pt.weather[Number(code)]).toBeTruthy()
+        // The Messages type can't check Record keys, so compare against English here
+        const codes = Object.keys(en.weather)
+        for (const messages of [pt, es]) {
+            expect(Object.keys(messages.weather)).toEqual(codes)
         }
     })
 })
